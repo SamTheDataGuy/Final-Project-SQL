@@ -39,6 +39,7 @@ Top 5 cities "Mountain View, United States", "New York, United States", "San Fra
 
 
 
+
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
 
