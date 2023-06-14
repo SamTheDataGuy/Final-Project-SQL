@@ -1,16 +1,42 @@
-Question 1: When is web traffic highest throughout the day?  Distribution for each country?
+Question 1: When is web traffic highest throughout the day?  When is web traffic highest during the week?
 
 SQL Queries:
 
-Answer:
+  -- Visits by hour of day
+  select time/(60*60), count(*)
+  from visits
+  where time is not null
+  group by time/(60*60)
+  order by time/(60*60);
+
+Answer: Between 00:00 and 06:00 UTC
 
 
 
-Question 2: When is web traffic highest during the week?
+Question 2: Where are most visitors from? Top 10 countries?
 
 SQL Queries:
 
-Answer:
+  select country, count(*)
+  from visits 
+  group by country
+  order by count(*) desc
+
+
+
+Answer: 
+
+"country"	"count"
+"United States"	8372
+"India"	696
+"United Kingdom"	647
+"Canada"	617
+"Germany"	327
+"Japan"	235
+"Australia"	218
+"France"	210
+"Taiwan"	165
+"Netherlands"	154
 
 
 
