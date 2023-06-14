@@ -30,8 +30,9 @@ Analysis
 - Website traffic is steady throughout the week, then drops by 50% on the weekends.  This is also helpful for resource planning, as it would allow for warehouse and customer service staff to work less hours on wekeends.
 
 ## Challenges 
-- The data is very messy, and cleaning it in SQL was difficult at first for me.
+- The data is very messy with lots of errors and null or unusable values, and cleaning it in SQL was difficult for me at first.
 - I am experienced in Python, so I found myself a little frustrated when I knew a really easy way to fix something in Python, but had to figure how to perform the same action in SQL, which was usually less straightforward.
+- The column names are not the most intuitive and it was a bit difficult to determine what they meant (took some Googling).  It was also difficult to determine what units some values were in, specifically the "time" column in the "all_sessions" table.  I wasn't sure if the values were in seconds or milliseconds, and so I made some assumptions that may not have been correct.
 
 ## Future Goals
 Spend a significant amount of time inspecting the analytics table, and attempting to fill in missing data from other tables.  It would be interesting to see how the results would differ from only using the all_sessions table.
