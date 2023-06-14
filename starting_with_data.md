@@ -8,6 +8,14 @@ SQL Queries:
   where time is not null
   group by time/(60*60)
   order by time/(60*60);``
+  
+  -- Top 5 countries with highest revenue
+    select country, sum(productquantity*productprice) as total_revenue
+    from transactions t
+    join visits v on t.visitid = v.visitid
+    group by country
+    order by sum(productquantity*productprice) desc
+    limit 5;
 
 Answer: Between 00:00 and 06:00 UTC
 
