@@ -2,31 +2,7 @@ Question 1:
 
 SQL Queries:
 
-/* 
-The values in the totaltransaction column of the transactions table (created from all_sessions table) don't really make sense
-and there are plenty of null values, so I calculated revenue as productquanity times productprice
-*/
-
--- Top 5 countries with highest revenue
-select country, sum(productquantity*productprice) as total_revenue
-from transactions t
-join visits v on t.visitid = v.visitid
-group by country
-order by sum(productquantity*productprice) desc
-limit 5;
-
--- Top 5 cities with highest revenue
-select city || ', ' || country, sum(productquantity*productprice) as total_revenue
-from transactions t
-join visits v on t.visitid = v.visitid
-where city is not null
-group by city, country
-order by sum(productquantity*productprice) desc
-limit 5;
-
-
-Answer: Top 5 countries: "United States", "Canada", "Australia", "Argentina", "Ireland"
-        Top 5 cities "Mountain View, United States", "New York, United States", "San Francisco, United States", "Salem, United States", "San Jose, United States"
+Answer:
 
 
 
@@ -39,22 +15,6 @@ Answer:
 
 
 Question 3: 
-
-SQL Queries:
-
-Answer:
-
-
-
-Question 4: 
-
-SQL Queries:
-
-Answer:
-
-
-
-Question 5: 
 
 SQL Queries:
 
