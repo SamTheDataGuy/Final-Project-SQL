@@ -71,7 +71,13 @@ SQL Queries:
 
 Answer:
 
-`Top 5 cities, average number of products ordered per visit: "Nashville, United States, 1.00", "Madrid, Spain,	0.53", "Columbus, United States, 0.50", "Detroit, United States, 0.25", "Salem, United States, 0.16"`
+```Top 5 cities, average number of products ordered per visit: 
+"Nashville, United States, 1.00", 
+"Madrid, Spain,	0.53", 
+"Columbus, United States, 0.50", 
+"Detroit, United States, 0.25", 
+"Salem, United States, 0.16"
+```
 
 
 
@@ -102,10 +108,11 @@ SQL Queries:
 
 
 Answer:
+```
+When grouping by country and category, the most popular categories in the US are "Nest-USA", "Home/Shop by Brand/Google/", and "Home/Shop by Brand/Android/".  No other patterns are apparent as there is not enough data, and only 1 order in each category for the other countries.
 
-`When grouping by country and category, the most popular categories in the US are "Nest-USA", "Home/Shop by Brand/Google/", and "Home/Shop by Brand/Android/".  No other patterns are apparent as there is not enough data, and only 1 order in each category for the other countries.`
-
-`When grouping by city, the most popular city for most categories is located in the US.`
+When grouping by city, the most popular city for most categories is located in the US.
+```
 
 
 
@@ -141,7 +148,10 @@ SQL Queries:
         order by country, city, total_units_sold desc) as temp
     where rank = 1
 
-Answer: When looking at countries, Customers from Spain love Waze Dress Socks, and customers from the US love Leatherette Journals.  When looking at cities it's difficult to draw conclusions as the order quantities are so small and spread out throughout the cities, but the Spanish Waze Dress Socks all live in Madrid, and in Salem, US customers are obsessed with their Red Spiral Google Notebooks.
+Answer: 
+```
+When looking at countries, Customers from Spain love Waze Dress Socks, and customers from the US love Leatherette Journals.  When looking at cities it's difficult to draw conclusions as the order quantities are so small and spread out throughout the cities, but the Spanish Waze Dress Socks all live in Madrid, and in Salem, US customers are obsessed with their Red Spiral Google Notebooks.
+```
 
 
 
@@ -159,7 +169,10 @@ SQL Queries:
     order by sum(productquantity*productprice) desc
     limit 5;
 
-Answer: Since the orders in the US are much higher than the other countries, the company should look at what they're spending on advertising in different regions.  Can they spend less in the US and get similar sales?  Are they over spending in markets with low sales, or would increasing advertising improve sales?
+Answer: 
+```
+Since the orders in the US are much higher than the other countries, the company should look at what they're spending on advertising in different regions.  Can they spend less in the US and get similar sales?  Are they over spending in markets with low sales, or would increasing advertising improve sales?
+```
 
 
 
