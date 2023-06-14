@@ -4,7 +4,7 @@ Answer the following questions and provide the SQL queries used to find the answ
 **Question 1: Which cities and countries have the highest level of transaction revenues on the site?**
 
 
-SQL Queries:
+SQL Queries: 
 
     /* 
     The values in the totaltransaction column of the transactions table (created from all_sessions table) don't really make sense
