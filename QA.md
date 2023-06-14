@@ -10,98 +10,100 @@ Describe your QA process and include the SQL queries used to execute it.
 I inspected all tables and determined which data was going to be ignored due to it being redundant, messy, empty, or too large in volume (analytics table).  Here is what I determined:
 
 ```
-**All_sessions table
-**  - **FullVisitorId column**
+All_sessions table
+  - FullVisitorId column
     - has very large numeric values, I will leave it as string values to save space
     - Has some duplicates
-  - **Time column** 
+  - Time column
     - Values are numeric, I will convert.  
     - There are 86,400 seconds in a day, 42% of values are below this, 25% are above, and 33% have a value of zero.  I assumed that these values are in seconds, in UTC time zone. 
     - For the values above 86,400 I assumed there were issues that added extra days, and so I converted them to a time by subtracting multiples of 86,400 until they became lower than 86,400.  I only did this for values below 6*86400, the rest I converted to null.
     - I converted zeros to null so that they wouldn’t affect distribution analysis
-  - **Country column**
+  - Country column
     - 24 values of “(not set)”, I converted these to null.
-  - **City column** 
+  - City column 
     - has lots of “(not set)” and “not available in demo dataset” values.  I converted these to null.
-  - **TotalTransactionRevenue**, 
+  - TotalTransactionRevenue, 
     - Only 81 sessions have transactions
-  - **TimeOnSite**, 
+  - TimeOnSite, 
     - Many null values
-  - **SessionQualityDim**, 
+  - SessionQualityDim, 
     - Mostly null values
-  - **Date**
+  - Date
     - In YYYYMMDD format, easy to deal with 
-  - **Visitid**
+  - Visitid
     - Duplicates
     - Need to create a visit_line_items table
-  - **ProductRefundAmount**, 
+  - ProductRefundAmount, 
     - Totally null, removed
-  - **productRevenue**, 
+  - productRevenue, 
     - Mostly null values
-  - **transactionRevenue**
+  - transactionRevenue
     - Mostly null
-  - **transactionId** 
+  - transactionId 
     - Mostly null values
-  - **ProductQuantity**
+  - ProductQuantity
     - Mostly null
-  - **itemQuantity**, 
+  - itemQuantity, 
     - Totally null
-  - **itemRevenue**, 
+  - itemRevenue, 
     - Totally null
-  - **searchKeyword** column 
+  - searchKeyword column 
       - completely blank (no values)
-  - **Productprice**
+  - Productprice
       - Not clear what currency/unit productPrice values are in, and there are some zeros
-  - **ProductVariant** 
+  - ProductVariant 
     - Only has one distinct value of “(not set)”, it can be removed
-  - **CurrencyCode** 
+  - CurrencyCode 
     - has some blank values, but only 1 other distinct value “USD”.  Could probably fill in the blanks with the same value. 
-  - **V2ProductCategory and pageTitle **
+  - V2ProductCategory and pageTitle 
     - Columns look messy.  v2ProductCategory has some “(not set)” values, and one blank value.
-  - **eCommerceAction_type and eCommerceAction_step **
+  - eCommerceAction_type and eCommerceAction_step 
     - Might be boolean.
-  - **eCommerceAction_option** 
+  - eCommerceAction_option 
     - Mostly blank but has some values
 
-**Analytics table**  
+Analytics table  
   - Very large table, and has a lot of duplicated data.  
   - I will ignore it and see if I can get by using the all_sessions table instead.
 
-**Products table**
-  - **Sku**
+Products table
+  - Sku
     - Ensured every value is unique (1092 rows and unique values)
     - 170 start with a ‘9’, 922 start with a ‘G”
     - Thought about removing skus starting with a ‘9’ as they seem like duplicates to other products, but there may be a good reason for them.  I will leave them as is.
-  - **Name**
+  - Name
     - Remove unneeded white space in strings
     - 1092 rows, but only 309 unique values, what’s going on here?  Assuming these products with different skus but same name have different sizes, and that the dataset is missing that data.
-  - **SKU column **
+  - SKU column 
     - Has numeric and string values, relates to sales_by_sku
-  - **orderedQuantity column **
+  - orderedQuantity column 
     - Converted to int
     - Seems similar to total_ordered column from sales_by_sku table, and might be redundant data
     - Confirmed no values less than zero
-  - **Stocklevel**
+  - Stocklevel
     - Converted to int
     - Confirmed no values less than zero
-  - **restockingLeadTime** 
+  - restockingLeadTime 
     - Converted to int
     - Confirmed no values less than zero
     - Doesn’t specify units, so I assumed it was number of days
-  - **sentimentScore** 
+  - sentimentScore 
     - has blank value in first row, and 
     - meaning of this column is unclear at first glance
     - 102 negative values, 819 positive values, and 1 null value
     - After some research, sentiment scores from Google are usually between -1 and 1, with 1 being the most positive.  
     - I replaced the null value with 0, and confirmed that all values are between -1 and 1.
-  - **sentimentMagnitude** 
+  - sentimentMagnitude 
     - 1 null value, and the rest are between 0.1 and 2
     - Sentiment magnitudes should be between 0 and positive infinity, so this data is good
     - Filled null value with average sentiment magnitude.
 
-**Sales_by_sku table**
+Sales_by_sku table
   - This table was deleted because all data is repeated in the sales_report table
 
-**Sales_report**
+Sales_report
   - This table was deleted because the data is already repeated in the products table.
   - The values in the total_ordered column from the sales_report are much lower than the values in the orderedQuantity column from the products table, so I assumed that the products table was updated more recently.
+
+
