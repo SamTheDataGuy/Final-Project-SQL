@@ -2,26 +2,32 @@ Question 1: When is web traffic highest throughout the day?  When is web traffic
 
 SQL Queries:
 
-  ```-- Visits by hour of day
+  ```
+  -- Visits by hour of day
   select time/(60*60), count(*)
   from visits
   where time is not null
   group by time/(60*60)
-  order by time/(60*60);```
+  order by time/(60*60);
+  ```
   
-  -- Top 5 countries with highest revenue
-    select country, sum(productquantity*productprice) as total_revenue
-    from transactions t
-    join visits v on t.visitid = v.visitid
-    group by country
-    order by sum(productquantity*productprice) desc
-    limit 5;
+```
+-- Visits by day of week
+select extract(dow from date) as day_of_week, count(*) as visits
+from visits
+where time is not null
+group by extract(dow from date)
+order by extract(dow from date);
+```
+    
 
-Answer: Between 00:00 and 06:00 UTC
+Answer: 
+`Between 00:00 and 06:00 UTC`
+``
 
 
 
-Question 2: Where are most visitors from? Top 10 countries?
+Question 2: Where are most visits from? Top 5 countries?
 
 SQL Queries:
 
@@ -29,22 +35,18 @@ SQL Queries:
   from visits 
   group by country
   order by count(*) desc
+  limit 5
 
 
 
 Answer: 
-
-"country"	"count"
-"United States"	8372
-"India"	696
-"United Kingdom"	647
-"Canada"	617
-"Germany"	327
-"Japan"	235
-"Australia"	218
-"France"	210
-"Taiwan"	165
-"Netherlands"	154
+```
+"United States"	        8372 visits
+"India"	                696 visits
+"United Kingdom"        647 visits
+"Canada"	        617 visits
+"Germany"	        327 visits
+```
 
 
 
