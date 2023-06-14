@@ -2,12 +2,12 @@ Question 1: When is web traffic highest throughout the day?  When is web traffic
 
 SQL Queries:
 
-  -- Visits by hour of day
+  ``-- Visits by hour of day
   select time/(60*60), count(*)
   from visits
   where time is not null
   group by time/(60*60)
-  order by time/(60*60);
+  order by time/(60*60);``
 
 Answer: Between 00:00 and 06:00 UTC
 
