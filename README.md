@@ -1,7 +1,18 @@
 # Final-Project-Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
-(fill in your description and goals here)
+Explore, clean, and analyze the data.  
+
+Exploration: 
+- Look at the tables and try to make sense of the column names
+- See which columns could be used as primary keys
+- Confirm which tables columns and tables are useful or redundant
+
+Cleaning: 
+- Ensuring all columns are in a usable data type, 
+- All duplicates rows removed 
+- Tables are reduced and split into multiple tables when needed, 
+- Values are in the correct units 
 
 ## Process
 ### (your step 1)
