@@ -7,8 +7,8 @@ What issues will you address by cleaning the data?
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
-/* CODE FOR CLEANING ALL_SESSIONS TABLE.  THIS TABLE HAS MANY REDUNDANT AND/OR UNNECESSARY VALUES WHICH WILL BE ELIMINATED BY 
-SPLITTING THE DATA INTO SEPARATE TABLES (NORMALIZATION) */
+    /* CODE FOR CLEANING ALL_SESSIONS TABLE.  THIS TABLE HAS MANY REDUNDANT AND/OR UNNECESSARY VALUES WHICH WILL BE ELIMINATED BY 
+    SPLITTING THE DATA INTO SEPARATE TABLES (NORMALIZATION) */
 
     -- Create visits table from all_sessions to normalize data (single row for each visitid)
     drop table if exists visits;
