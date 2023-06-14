@@ -31,8 +31,8 @@ SQL Queries:
 
 
 Answer: 
-    Top 5 countries: "United States", "Canada", "Australia", "Argentina", "Ireland"
-    Top 5 cities "Mountain View, United States", "New York, United States", "San Francisco, United States", "Salem, United States", "San Jose, United States"
+Top 5 countries: "United States", "Canada", "Australia", "Argentina", "Ireland"
+Top 5 cities "Mountain View, United States", "New York, United States", "San Francisco, United States", "Salem, United States", "San Jose, United States"
 
 
 
@@ -41,6 +41,7 @@ Answer:
 
 
 SQL Queries:
+
 
 
 
