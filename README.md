@@ -15,7 +15,7 @@ Cleaning:
 - Values are in the correct units 
 
 Analysis
-- Gain meaningful insights into the data
+- Gain meaningful business insights from the data
 
 ## Process
 - Inspected each table and calculated min, max, avg, count unique, and count null for each column in order to determine what cleaning would need to be done
